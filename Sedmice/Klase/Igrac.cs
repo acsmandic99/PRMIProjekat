@@ -1,14 +1,23 @@
-﻿namespace Klase
+﻿using System;
+
+namespace Klase
 {
 	[Serializable]
     public class Igrac
     {
-		private	string ime;
-		private string prezime;
-		private int brojPoena;
+		private string ime = "Anonimac";
+		private string prezime = "Anonimni";
+		private int brojPoena = 0;
 		private int tim;
 
-		public int Tim
+        public Igrac(int tim, string prezime, string ime)
+        {
+            Tim = tim;
+            Prezime = prezime;
+            Ime = ime;
+        }
+
+        public int Tim
 		{
 			get { return tim; }
 			set { tim = value; }

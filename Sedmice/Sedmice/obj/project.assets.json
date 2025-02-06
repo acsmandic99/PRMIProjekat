@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Korisnik\\Documents\\MrezeProjekat\\Sedmice\\Sedmice\\Sedmice.csproj",
-      "projectName": "Sedmice",
-      "projectPath": "C:\\Users\\Korisnik\\Documents\\MrezeProjekat\\Sedmice\\Sedmice\\Sedmice.csproj",
+      "projectUniqueName": "C:\\Users\\Korisnik\\Documents\\MrezeProjekat\\Sedmice\\Sedmice\\Klijent.csproj",
+      "projectName": "Klijent",
+      "projectPath": "C:\\Users\\Korisnik\\Documents\\MrezeProjekat\\Sedmice\\Sedmice\\Klijent.csproj",
       "packagesPath": "C:\\Users\\Korisnik\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Korisnik\\Documents\\MrezeProjekat\\Sedmice\\Sedmice\\obj\\",
       "projectStyle": "PackageReference",

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Sedmice")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e32510e11b32a5b8f125a940ae15d4c2e6d7b799")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+41fa9fc591e37e1d4c596afe19b50b0a31448961")]
 [assembly: System.Reflection.AssemblyProductAttribute("Sedmice")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Sedmice")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sedmice", "Sedmice\Sedmice.csproj", "{F23B8157-A51B-46E9-8677-5ECABF610E16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Klijent", "Sedmice\Klijent.csproj", "{F23B8157-A51B-46E9-8677-5ECABF610E16}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{63F9EB63-F9CD-4046-B4C8-D0FFF474C5BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Klase", "Klase\Klase.csproj", "{CF8085EC-9565-4C80-8B31-E91CD51DD28F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Klase", "Klase\Klase.csproj", "{CD24B78D-97FB-4A35-B5E7-AA6FA564D2EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{63F9EB63-F9CD-4046-B4C8-D0FFF474C5BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63F9EB63-F9CD-4046-B4C8-D0FFF474C5BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63F9EB63-F9CD-4046-B4C8-D0FFF474C5BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF8085EC-9565-4C80-8B31-E91CD51DD28F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF8085EC-9565-4C80-8B31-E91CD51DD28F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF8085EC-9565-4C80-8B31-E91CD51DD28F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF8085EC-9565-4C80-8B31-E91CD51DD28F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD24B78D-97FB-4A35-B5E7-AA6FA564D2EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD24B78D-97FB-4A35-B5E7-AA6FA564D2EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD24B78D-97FB-4A35-B5E7-AA6FA564D2EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD24B78D-97FB-4A35-B5E7-AA6FA564D2EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
