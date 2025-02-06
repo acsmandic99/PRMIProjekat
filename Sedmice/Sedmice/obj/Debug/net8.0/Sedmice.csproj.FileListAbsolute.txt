@@ -1,0 +1,15 @@
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\bin\Debug\net8.0\Sedmice.exe
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\bin\Debug\net8.0\Sedmice.deps.json
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\bin\Debug\net8.0\Sedmice.runtimeconfig.json
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\bin\Debug\net8.0\Sedmice.dll
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\bin\Debug\net8.0\Sedmice.pdb
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\obj\Debug\net8.0\Sedmice.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\obj\Debug\net8.0\Sedmice.AssemblyInfoInputs.cache
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\obj\Debug\net8.0\Sedmice.AssemblyInfo.cs
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\obj\Debug\net8.0\Sedmice.csproj.CoreCompileInputs.cache
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\obj\Debug\net8.0\Sedmice.sourcelink.json
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\obj\Debug\net8.0\Sedmice.dll
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\obj\Debug\net8.0\refint\Sedmice.dll
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\obj\Debug\net8.0\Sedmice.pdb
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\obj\Debug\net8.0\Sedmice.genruntimeconfig.cache
+C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Sedmice\obj\Debug\net8.0\ref\Sedmice.dll
