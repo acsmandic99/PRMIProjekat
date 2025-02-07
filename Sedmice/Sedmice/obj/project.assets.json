@@ -1,11 +1,29 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "Klase/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Klase.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Klase.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Klase/1.0.0": {
+      "type": "project",
+      "path": "../Klase/Klase.csproj",
+      "msbuildProject": "../Klase/Klase.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "Klase >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Korisnik\\.nuget\\packages\\": {},
@@ -38,7 +56,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Korisnik\\Documents\\MrezeProjekat\\Sedmice\\Klase\\Klase.csproj": {
+              "projectPath": "C:\\Users\\Korisnik\\Documents\\MrezeProjekat\\Sedmice\\Klase\\Klase.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

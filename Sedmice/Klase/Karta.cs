@@ -7,21 +7,24 @@ using System.Threading.Tasks;
 namespace Klase
 {
     [Serializable]
-	public enum Znak { Tref,Pik,Karo,Herc}
-	public enum VrednostKarte { Sedam,Osam,Devet,Deset,J,Q,K,A}
+    
+	public enum Znak { Tref, Pik, Karo, Herc }
+    [Serializable]
+    public enum VrednostKarte { Sedam, Osam, Devet, Deset, J, Q, K, A }
+    [Serializable]
     public class Karta
     {
-		private VrednostKarte broj;
-		private Znak znak;
+        private VrednostKarte broj;
+        private Znak znak;
 
         public override string ToString()
         {
-			string retVal = "";
-            switch(broj)
-			{
+            string retVal = "";
+            switch (broj)
+            {
                 case VrednostKarte.Sedam:
-					retVal += "7";
-					break;
+                    retVal += "7";
+                    break;
                 case VrednostKarte.Osam:
                     retVal += "8";
                     break;
@@ -44,7 +47,7 @@ namespace Klase
                     retVal += "A";
                     break;
             }
-            switch(znak)
+            switch (znak)
             {
                 case Znak.Tref:
                     retVal += " Tref";
@@ -69,16 +72,17 @@ namespace Klase
         }
 
         public Znak Znak
-		{
-			get { return znak; }
-			set { znak = value; }
-		}
+        {
+            get { return znak; }
+            set { znak = value; }
+        }
 
-		public VrednostKarte Broj
-		{
-			get { return broj; }
-			set { broj = value; }
-		}
+        public VrednostKarte Broj
+        {
+            get { return broj; }
+            set { broj = value; }
+        }
 
-	}
+    }
+
 }
