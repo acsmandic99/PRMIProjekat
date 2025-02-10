@@ -22,24 +22,33 @@ namespace Klase
 
 		public Karta OdigrajKartu(int index)
 		{
-			Karta karta = karteURuci[index - 1];
-			karteURuci.RemoveAt(index - 1);
+			Karta karta = karteURuci[index];
+			karteURuci.RemoveAt(index);
 			return karta;
 		}
 		public void IspisiKarte()
 		{
+			ConsoleColor orgBoja = Console.ForegroundColor;
 			int i = 1;
 			foreach(Karta karta in  karteURuci)
 			{
-				Console.WriteLine(i + " - " + karta.ToString());
+				Console.Write(i + " - " + "( ");
+				if(karta.Znak == Znak.Herc || karta.Znak == Znak.Karo)
+					Console.ForegroundColor = ConsoleColor.Red;
+				Console.Write(karta.ToString() + "),  ");
+				Console.ForegroundColor = orgBoja;
 				i++;
 			}
+			Console.WriteLine();
 		}
 		public void IzvuciKartu(Karta novaKarta)
 		{
 			karteURuci.Add(novaKarta);
 		}
-
+		public Karta KartaNaIndexu(int index)
+		{
+			return karteURuci[index];
+		}
 		public void NosiKarte(Karta osvojenaKarta)
 		{
 			osvojeneKarte.Add(osvojenaKarta);
@@ -53,6 +62,11 @@ namespace Klase
 					poeni++;
 			}
 			return poeni;
+		}
+
+		public int KarteURuciCount
+		{
+			get { return karteURuci.Count; }
 		}
         public int Tim
 		{

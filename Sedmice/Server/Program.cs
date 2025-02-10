@@ -134,12 +134,62 @@ namespace Server
                 }
                 if (acceptedSocket < brIgraca)
                     continue;
-
-                //svi su se konektovali sada zelim da namestim da mi svaki igrac se nalazi na istom indexu u igraci i svaki
-                //socket za tog igraca da se nalazi na istom tom indexu u igraciSocket
-
-
+                else
+                    break;
             }
+            //svi su se konektovali sada zelim da namestim da mi svaki igrac se nalazi na istom indexu u igraci i svaki
+            //socket za tog igraca da se nalazi na istom tom indexu u igraciSocket
+            Console.WriteLine("Svi su se konektovali");
+            //namestanje indexa u nizovima
+            foreach(Socket soket in igraciSocket)
+            {
+                using(MemoryStream ms = new MemoryStream())
+                {
+                    Paket pkt = new Paket();
+                    pkt.syn = true;
+                    bf.Serialize(ms,pkt);
+                    dataBuffer = ms.ToArray();
+                    soket.Send(dataBuffer);
+                }
+            }
+            int index_namesteno = 0;
+            while(index_namesteno < brIgraca)
+            {
+                for(int i = 0;i<brIgraca;i++)
+                {
+                    if (igraciSocket[i].Poll(1000*500,SelectMode.SelectRead))
+                    {
+                        Paket pkt;
+                        int bytesRecived = igraciSocket[i].Receive(buffer);
+                        using(MemoryStream ms = new MemoryStream(buffer))
+                        {
+                            pkt = (Paket)bf.Deserialize(ms);
+                        }
+                        //ovde cemo da vrsimo sinhronizaciju samo jednom na pocetku
+                        if(pkt.syn == true)
+                        {
+                            int index = imeMaprianoNaIndex[pkt.message];
+                            if(i != index)
+                            {
+                                Socket tempSok = igraciSocket[index];
+                                igraciSocket[index] = igraciSocket[i];
+                                igraciSocket[i] = tempSok;
+                            }
+                            index_namesteno++;
+                        }
+                    }
+                }
+            }
+            //sad kad je sve ovo namesteno moze igra da pocne
+            Console.WriteLine("Namestili smo indexe na nizovima");
+            //provera da li je dobro sve 
+            for(int i = 0;i<brIgraca;i++)
+            {
+                Console.WriteLine("index " + i + " " + igraci[i].Ime + " " + igraciSocket[i].RemoteEndPoint.ToString());
+            }
+
+            Igra igra = new Igra(igraci, igraciSocket);
+            igra.Igraj();
 
             Console.ReadLine();
         }

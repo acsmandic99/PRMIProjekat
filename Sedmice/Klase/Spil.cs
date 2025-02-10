@@ -42,9 +42,9 @@ namespace Klase
             }
         }
 
-        public int Count()
+        public int Count
         {
-            return spil.Count;
+           get { return spil.Count; }
         }
 
         public Karta IzvuciKartu()

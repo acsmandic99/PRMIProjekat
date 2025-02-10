@@ -13,5 +13,11 @@ namespace Klase
         public string message;
         public int port;
         public bool syn;
+        public bool igra;
+        public Igrac igrac;
+        public List<Karta> stanjeStola;
+        public bool potez = false;
+        public int kartaZaIgranje;
+
     }
 }
