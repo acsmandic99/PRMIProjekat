@@ -49,9 +49,14 @@ namespace Klase
 
         public Karta IzvuciKartu()
         {
-            Karta izvucena = spil[spil.Count - 1];
-            spil.RemoveAt(spil.Count - 1);
-            return izvucena;
+            if (spil.Count - 1 >= 0)
+            {
+                Karta izvucena = spil[spil.Count - 1];
+                spil.RemoveAt(spil.Count - 1);
+                return izvucena;
+            }
+            else
+                return null;
         }
 
     }

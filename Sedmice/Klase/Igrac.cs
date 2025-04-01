@@ -43,7 +43,8 @@ namespace Klase
 		}
 		public void IzvuciKartu(Karta novaKarta)
 		{
-			karteURuci.Add(novaKarta);
+			if(novaKarta != null)
+				karteURuci.Add(novaKarta);
 		}
 		public Karta KartaNaIndexu(int index)
 		{

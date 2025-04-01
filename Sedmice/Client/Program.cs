@@ -33,7 +33,7 @@ namespace Sedmice
             udpSocket.Bind(localEP);
 
             EndPoint serverUDPEP = new IPEndPoint(IPAddress.Parse(IPAdresa), port);
-            byte[] buffer = new byte[4096];
+            byte[] buffer = new byte[8192];
             byte[] databuffer;
             Paket paket;
             BinaryFormatter bf = new BinaryFormatter();
@@ -114,63 +114,94 @@ namespace Sedmice
 
                 //krece igra
                 Console.Clear();//brisemo konzolu zbog pocetka igre
+                Paket paketTest = new Paket();
+                bool nova = false;
                 while (true)
                 {
-                    Paket pkt = new Paket();
                     while (Console.KeyAvailable)
                     {
                         Console.ReadKey(true); //da slucajno ne bi neko pritiskao dok nije njihhov red i to se odma racunalo u njihov potez
                     }
-                    if (tcpSocket.Poll(1000*500,SelectMode.SelectRead))
+                    if (tcpSocket.Poll(1000*100,SelectMode.SelectRead))
                     {
+                        Paket pkt = new Paket();
                         Console.Clear();
                         int byteRecived = tcpSocket.Receive(buffer);
                         using(MemoryStream ms = new MemoryStream(buffer))
                         {
                             pkt = (Paket)bf.Deserialize(ms);
                         }
-                        if(pkt.igra == true)
+                        paketTest = pkt;
+                        igrac = pkt.igrac;
+                        Console.WriteLine("Ime " + igrac.Ime);
+                        Console.WriteLine("Karte u ruci: ");
+                        igrac.IspisiKarte();
+                        Console.Write("Sto: ");
+                        IspisiSto(pkt.stanjeStola);
+                        Console.WriteLine(pkt.message);
+                        if (pkt.stanjeIgre == StanjeIgre.REDOVNA_IGRA)
                         {
-                            igrac = pkt.igrac;
-                            igrac.IspisiKarte();
-                            Console.Write("Sto: ");
-                            IspisiSto(pkt.stanjeStola);
-                            ConsoleColor org = Console.ForegroundColor;
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            Console.WriteLine(pkt.message);
-                            Console.ForegroundColor = org;
-                            if (pkt.potez == true)
+                            if (pkt.NaPotezu.Equals(igrac.Ime))
                             {
-                                int kartaZaIgranje;
+                                Console.WriteLine("Vi ste na potezu,izaberite Vasu kartu!");
                                 do
                                 {
-                                    Console.WriteLine("Vi ste na redu,izaberite kartu koju zelite da odigrate ");
-                                    kartaZaIgranje = Int32.Parse(Console.ReadLine());
-                                    if (kartaZaIgranje == 5)
-                                        kartaZaIgranje = 0;
-                                }
-                                while (kartaZaIgranje > igrac.KarteURuciCount || kartaZaIgranje < 0);
-                                kartaZaIgranje = kartaZaIgranje - 1;
-                                Paket paket1 = new Paket();
-                                paket1.igra = true;
-                                paket1.kartaZaIgranje = kartaZaIgranje;
-                                using(MemoryStream ms = new MemoryStream())
+                                    pkt.kartaZaIgranje = Int32.Parse(Console.ReadLine());
+                                } while (pkt.kartaZaIgranje > igrac.KarteURuciCount || pkt.kartaZaIgranje < 1);
+                                pkt.kartaZaIgranje = pkt.kartaZaIgranje - 1;
+                                using (MemoryStream ms = new MemoryStream())
                                 {
-                                    bf.Serialize(ms, paket1);
+                                    bf.Serialize(ms, pkt);
                                     databuffer = ms.ToArray();
                                 }
                                 tcpSocket.Send(databuffer);
-                                pkt = new Paket();
                             }
+                        }
+                        else if (pkt.stanjeIgre == StanjeIgre.ODGOVOR_PRVOG_IGRACA && pkt.NaPotezu.Equals(igrac.Ime))
+                        {
+                            Console.WriteLine(pkt.specijalnaPoruka);
+                            Console.WriteLine("Vi ste na potezu,izaberite Vasu kartu!");
+                            do
+                            {
+                                pkt.kartaZaIgranje = Int32.Parse(Console.ReadLine());
+                                if (pkt.kartaZaIgranje == 5)
+                                    pkt.kartaZaIgranje = 0;
+                            } while (pkt.kartaZaIgranje > igrac.KarteURuciCount || pkt.kartaZaIgranje < 0);
+                            pkt.kartaZaIgranje = pkt.kartaZaIgranje - 1;
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                bf.Serialize(ms, pkt);
+                                databuffer = ms.ToArray();
+                            }
+                            tcpSocket.Send(databuffer);
+                        }
+                        else if (pkt.stanjeIgre == StanjeIgre.ZAVRSETAK_IGRE && nova == false)
+                        {
+                            do
+                            {
+                                Console.WriteLine("Odgovorite sa Y-DA ili N - NE");
+                                pkt.novaIgra = Console.ReadLine().ToString()[0];
+                            } while (pkt.novaIgra.ToString().ToUpper().Equals("Y") && pkt.novaIgra.ToString().ToUpper().Equals("N"));
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                bf.Serialize(ms, pkt);
+                                databuffer = ms.ToArray();
+                            }
+                            tcpSocket.Send(databuffer);
+                            Console.WriteLine("Cekaju se ostali igraci");
+                            nova = true;
                         }
                     }
                 }
             }
             catch (SocketException ex)
             {
+                udpSocket.Close();
                 Console.WriteLine(ex.Message);
             }
 
+            udpSocket.Close();
+            
             Console.ReadKey();
         }
         public static void IspisiSto(List<Karta> sto)

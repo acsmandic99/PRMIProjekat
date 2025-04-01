@@ -16,8 +16,10 @@ namespace Klase
         public bool igra;
         public Igrac igrac;
         public List<Karta> stanjeStola;
-        public bool potez = false;
+        public string NaPotezu;
         public int kartaZaIgranje;
-
+        public StanjeIgre stanjeIgre;
+        public char novaIgra;
+        public string specijalnaPoruka;
     }
 }

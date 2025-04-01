@@ -49,7 +49,7 @@ namespace Server
             int brPokusaja = 0;
             int brPrijavljenihIgraca = 0;
 
-            byte[] buffer = new byte[4096];
+            byte[] buffer = new byte[8192];
             byte[] dataBuffer;
 
             Paket paket = new Paket();
@@ -190,6 +190,13 @@ namespace Server
 
             Igra igra = new Igra(igraci, igraciSocket);
             igra.Igraj();
+
+            foreach(Socket soket in igraciSocket)
+            {
+                soket.Close();
+            }
+            udpSocket.Close();
+            tcpSocket.Close();
 
             Console.ReadLine();
         }
