@@ -131,7 +131,6 @@ namespace Sedmice
                         {
                             pkt = (Paket)bf.Deserialize(ms);
                         }
-                        paketTest = pkt;
                         igrac = pkt.igrac;
                         Console.WriteLine("Ime " + igrac.Ime);
                         Console.WriteLine("Karte u ruci: ");
@@ -190,6 +189,10 @@ namespace Sedmice
                             tcpSocket.Send(databuffer);
                             Console.WriteLine("Cekaju se ostali igraci");
                             nova = true;
+                            if (pkt.novaIgra == 'N')
+                            {
+                                return;
+                            }
                         }
                     }
                 }

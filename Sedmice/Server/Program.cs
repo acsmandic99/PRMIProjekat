@@ -59,6 +59,7 @@ namespace Server
             Dictionary<string, int> imeMaprianoNaIndex = new Dictionary<string, int>();
             int acceptedSocket = 0;
             List<EndPoint> clientEPList = new List<EndPoint>();
+            //primanje igraca 
             while (brPrijavljenihIgraca < brIgraca)
             {
                 try
@@ -69,6 +70,7 @@ namespace Server
                         int bytesRecived = udpSocket.ReceiveFrom(buffer,SocketFlags.None,ref remoteEP);
                         using (MemoryStream ms = new MemoryStream(buffer))
                         {
+                            //primamo ceo objekat igraca sa klijentovog dela pa zato kastujemo
                             temp = (Igrac)bf.Deserialize(ms);
                         }
                         if (imeMaprianoNaIndex.ContainsKey(temp.Ime))
@@ -108,8 +110,10 @@ namespace Server
                     }
                     else
                     {
+                        //posle nekog vremena se gasi 
                         brPokusaja++;
-                        if(brPokusaja == 100)
+                        //%100
+                        if(brPokusaja%100==0)
                         {
                             Console.WriteLine("Cekam konekcije...");
                         }
@@ -123,6 +127,7 @@ namespace Server
                 }
                 catch(SocketException ex) { Console.WriteLine(ex.ToString()); }
             }
+            //saljemo svima tcp port preko kog ce igra da se odvija
             PosaljiSvimaTCPPort(clientEPList, tcpPort, udpSocket);
 
             while (true)
@@ -132,6 +137,7 @@ namespace Server
                     igraciSocket[acceptedSocket] = tcpSocket.Accept();
                     acceptedSocket++;
                 }
+                //tu se moze zaglaviti u beskonacnom loopu
                 if (acceptedSocket < brIgraca)
                     continue;
                 else

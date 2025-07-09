@@ -146,6 +146,9 @@ namespace Klase
                     {
                         igraci[IgracKojiJePoslednjiTukao].NosiKarte(karta);
                     }
+                    //TODO:
+                    //foreach u slucaju da ima 4 igraca
+                    //po timu da sabiras sumu od igraca.Tim =1 i igrac.Tim = 2
                     int poeniIgrac1 = igraci[0].IzbrojOsvojenePoene();
                     int poeniIgrac2 = igraci[1].IzbrojOsvojenePoene();
                     if (poeniIgrac1 > poeniIgrac2)
@@ -156,12 +159,29 @@ namespace Klase
                         paket.message += "\nPobedio je igrac " + igraci[0].Ime;
 
                     }
-                    else
+                    else if(poeniIgrac2 > poeniIgrac1)
                     {
                         igracNaPotezu = 1;
                         paket.message = "Igrac " + igraci[0].Ime + " je skupio " + poeniIgrac1 + " poena";
                         paket.message += "\nIgrac " + igraci[1].Ime + " je skupio " + poeniIgrac2 + " poena";
                         paket.message += "\nPobedio je igrac " + igraci[1].Ime;
+                    }
+                    else
+                    {
+                        if (IgracKojiJePoslednjiTukao == 0)
+                        {
+                            igracNaPotezu = 0;
+                            paket.message = "Igrac " + igraci[0].Ime + " je skupio " + poeniIgrac1 + " poena";
+                            paket.message += "\nIgrac " + igraci[1].Ime + " je skupio " + poeniIgrac2 + " poena";
+                            paket.message += "\nPobedio je igrac " + igraci[0].Ime + "jer je poslednji nosio karte.";
+                        }
+                        else
+                        {
+                            igracNaPotezu = 1;
+                            paket.message = "Igrac " + igraci[0].Ime + " je skupio " + poeniIgrac1 + " poena";
+                            paket.message += "\nIgrac " + igraci[1].Ime + " je skupio " + poeniIgrac2 + " poena";
+                            paket.message += "\nPobedio je igrac " + igraci[1].Ime + "jer je poslednji nosio karte.";
+                        }
                     }
                     paket.message += "\nDa li zelite da odigrate novu partiju? Y/N";
                     PosaljiIgracimaStanje(paket);
