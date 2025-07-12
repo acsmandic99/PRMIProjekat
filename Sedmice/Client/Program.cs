@@ -216,21 +216,36 @@ namespace Sedmice
                         }
                         else if (pkt.stanjeIgre == StanjeIgre.ZAVRSETAK_IGRE && nova == false)
                         {
-                            do
+                            bool validanUnos = false;
+                            while (!validanUnos)
                             {
-                                Console.WriteLine("Odgovorite sa Y-DA ili N - NE");
-                                pkt.novaIgra = Console.ReadLine().ToString()[0];
-                            } while (pkt.novaIgra.ToString().ToUpper().Equals("Y") && pkt.novaIgra.ToString().ToUpper().Equals("N"));
+                                Console.WriteLine("Odgovorite sa Y - DA ili N - NE");
+                                string unos = Console.ReadLine().Trim().ToUpper();
+                                if (unos == "Y" || unos == "N")
+                                {
+                                    pkt.novaIgra = unos[0];
+                                    validanUnos = true;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Pogresan unos! Molim unesite Y ili N.");
+                                }
+                            }
+
                             using (MemoryStream ms = new MemoryStream())
                             {
                                 bf.Serialize(ms, pkt);
                                 databuffer = ms.ToArray();
                             }
                             tcpSocket.Send(databuffer);
+
                             Console.WriteLine("Cekaju se ostali igraci");
                             nova = true;
+
                             if (pkt.novaIgra == 'N')
                             {
+                                Console.WriteLine("Izlaz iz igre. Hvala na igranju!");
+                                tcpSocket.Close();
                                 return;
                             }
                         }
