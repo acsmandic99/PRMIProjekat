@@ -8,3 +8,13 @@ C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Server\obj\Debug\Server.csproj
 C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Server\obj\Debug\Server.csproj.Up2Date
 C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Server\obj\Debug\Server.exe
 C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Server\obj\Debug\Server.pdb
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Server\bin\Debug\Server.exe.config
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Server\bin\Debug\Server.exe
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Server\bin\Debug\Server.pdb
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Server\bin\Debug\Klase.dll
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Server\bin\Debug\Klase.pdb
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Server\obj\Debug\Server.csproj.Up2Date
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Server\obj\Debug\Server.exe
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Server\obj\Debug\Server.pdb

@@ -142,12 +142,31 @@ namespace Sedmice
                         {
                             if (pkt.NaPotezu.Equals(igrac.Ime))
                             {
-                                Console.WriteLine("Vi ste na potezu,izaberite Vasu kartu!");
-                                do
+                                Console.WriteLine("Vi ste na potezu, izaberite Vasu kartu! (1-4)");
+                                bool validno = false;
+                                while (!validno)
                                 {
-                                    pkt.kartaZaIgranje = Int32.Parse(Console.ReadLine());
-                                } while (pkt.kartaZaIgranje > igrac.KarteURuciCount || pkt.kartaZaIgranje < 1);
-                                pkt.kartaZaIgranje = pkt.kartaZaIgranje - 1;
+                                    Console.Write("Unesite broj od 1 do 4: ");
+                                    string unos = Console.ReadLine();
+                                    int izbor;
+                                    if (int.TryParse(unos, out izbor))
+                                    {
+                                        if (izbor >= 1 && izbor <= igrac.KarteURuciCount)
+                                        {
+                                            pkt.kartaZaIgranje = izbor - 1;
+                                            validno = true;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Pogresan unos! Morate uneti broj od 1 do " + igrac.KarteURuciCount);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pogresan unos! Morate uneti broj od 1 do 4");
+                                    }
+                                }
+
                                 using (MemoryStream ms = new MemoryStream())
                                 {
                                     bf.Serialize(ms, pkt);
@@ -158,15 +177,36 @@ namespace Sedmice
                         }
                         else if (pkt.stanjeIgre == StanjeIgre.ODGOVOR_PRVOG_IGRACA && pkt.NaPotezu.Equals(igrac.Ime))
                         {
-                            Console.WriteLine(pkt.specijalnaPoruka);
-                            Console.WriteLine("Vi ste na potezu,izaberite Vasu kartu!");
-                            do
+                            Console.WriteLine("Vi ste na potezu, izaberite Vasu kartu! (1-4 ili 5 za zavrsetak kruga)");
+                            bool validnoOdgovor = false;
+                            while (!validnoOdgovor)
                             {
-                                pkt.kartaZaIgranje = Int32.Parse(Console.ReadLine());
-                                if (pkt.kartaZaIgranje == 5)
-                                    pkt.kartaZaIgranje = 0;
-                            } while (pkt.kartaZaIgranje > igrac.KarteURuciCount || pkt.kartaZaIgranje < 0);
-                            pkt.kartaZaIgranje = pkt.kartaZaIgranje - 1;
+                                Console.Write("Unesite broj od 1 do 4 ili 5: ");
+                                string unos = Console.ReadLine();
+                                int izbor;
+                                if (int.TryParse(unos, out izbor))
+                                {
+                                    if (izbor == 5)
+                                    {
+                                        pkt.kartaZaIgranje = -1; // poseban signal za zavrsetak
+                                        validnoOdgovor = true;
+                                    }
+                                    else if (izbor >= 1 && izbor <= igrac.KarteURuciCount)
+                                    {
+                                        pkt.kartaZaIgranje = izbor - 1;
+                                        validnoOdgovor = true;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pogresan unos! Morate uneti broj od 1 do " + igrac.KarteURuciCount + " ili 5");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Pogresan unos! Morate uneti broj od 1 do 4 ili 5");
+                                }
+                            }
+
                             using (MemoryStream ms = new MemoryStream())
                             {
                                 bf.Serialize(ms, pkt);

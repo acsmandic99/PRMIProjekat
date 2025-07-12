@@ -8,3 +8,13 @@ C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Client\obj\Debug\Client.csproj
 C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Client\obj\Debug\Client.csproj.Up2Date
 C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Client\obj\Debug\Client.exe
 C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Client\obj\Debug\Client.pdb
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Client\bin\Debug\Client.exe.config
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Client\bin\Debug\Client.exe
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Client\bin\Debug\Client.pdb
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Client\bin\Debug\Klase.dll
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Client\bin\Debug\Klase.pdb
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Client\obj\Debug\Client.csproj.Up2Date
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Client\obj\Debug\Client.exe
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Client\obj\Debug\Client.pdb
