@@ -58,16 +58,37 @@ namespace Sedmice
                             if (paket.succsess == false)
                             {
                                 Console.WriteLine(paket.message);
-                                Console.WriteLine("Upisite novo ime igraca: ");
-                                igrac.Ime = Console.ReadLine();
-                                using(MemoryStream ms = new MemoryStream())
+
+                                // Traži ponovni unos SAMO za TIM
+                                int noviTim = 0;
+                                while (true)
+                                {
+                                    Console.Write("Molim unesite novi tim (1 ili 2): ");
+                                    string unosTima = Console.ReadLine();
+
+                                    if (int.TryParse(unosTima, out noviTim) && (noviTim == 1 || noviTim == 2))
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pogresan unos! Morate uneti broj 1 ili 2.");
+                                    }
+                                }
+
+                                igrac.Tim = noviTim;
+
+                                // Ponovo šaljemo ažuriranog igrača
+                                using (MemoryStream ms = new MemoryStream())
                                 {
                                     bf.Serialize(ms, igrac);
                                     databuffer = ms.ToArray();
                                 }
                                 udpSocket.SendTo(databuffer, serverUDPEP);
                             }
-                            else if(paket.succsess == true && paket.port == 0)
+
+
+                            else if (paket.succsess == true && paket.port == 0)
                             {
                                 Console.WriteLine(paket.message);
                             }

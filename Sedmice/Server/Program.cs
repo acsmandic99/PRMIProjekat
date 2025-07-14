@@ -91,7 +91,72 @@ namespace Server
                         }
                         else
                         {
+                            // ================= VALIDACIJA TIMOVA =======================
+                            int countTim1 = 0;
+                            int countTim2 = 0;
+                            for (int k = 0; k < brPrijavljenihIgraca; k++)
+                            {
+                                if (igraci[k].Tim == 1) countTim1++;
+                                else if (igraci[k].Tim == 2) countTim2++;
+                            }
 
+                            if (brIgraca == 2)
+                            {
+                                // za 2 igraca – oba moraju biti razlicitih timova
+                                if (countTim1 == 1 && temp.Tim == 1)
+                                {
+                                    paket.succsess = false;
+                                    paket.message = "Tim 1 je vec zauzet! Molim odaberite Tim 2.";
+                                    using (MemoryStream ms = new MemoryStream())
+                                    {
+                                        bf.Serialize(ms, paket);
+                                        dataBuffer = ms.ToArray();
+                                    }
+                                    udpSocket.SendTo(dataBuffer, remoteEP);
+                                    continue;
+                                }
+                                else if (countTim2 == 1 && temp.Tim == 2)
+                                {
+                                    paket.succsess = false;
+                                    paket.message = "Tim 2 je vec zauzet! Molim odaberite Tim 1.";
+                                    using (MemoryStream ms = new MemoryStream())
+                                    {
+                                        bf.Serialize(ms, paket);
+                                        dataBuffer = ms.ToArray();
+                                    }
+                                    udpSocket.SendTo(dataBuffer, remoteEP);
+                                    continue;
+                                }
+                            }
+                            else if (brIgraca == 4)
+                            {
+                                // za 4 igraca – max 2 po timu
+                                if (temp.Tim == 1 && countTim1 >= 2)
+                                {
+                                    paket.succsess = false;
+                                    paket.message = "Tim 1 je vec popunjen (2 igraca)! Molim odaberite Tim 2.";
+                                    using (MemoryStream ms = new MemoryStream())
+                                    {
+                                        bf.Serialize(ms, paket);
+                                        dataBuffer = ms.ToArray();
+                                    }
+                                    udpSocket.SendTo(dataBuffer, remoteEP);
+                                    continue;
+                                }
+                                else if (temp.Tim == 2 && countTim2 >= 2)
+                                {
+                                    paket.succsess = false;
+                                    paket.message = "Tim 2 je vec popunjen (2 igraca)! Molim odaberite Tim 1.";
+                                    using (MemoryStream ms = new MemoryStream())
+                                    {
+                                        bf.Serialize(ms, paket);
+                                        dataBuffer = ms.ToArray();
+                                    }
+                                    udpSocket.SendTo(dataBuffer, remoteEP);
+                                    continue;
+                                }
+                            }
+                            // ============================================================
                             imeMaprianoNaIndex[temp.Ime] = brPrijavljenihIgraca;
                             igraci[brPrijavljenihIgraca] = temp;
                             Console.WriteLine("Igrac " + igraci[brPrijavljenihIgraca].Ime + " se uspesno prijavio.");
