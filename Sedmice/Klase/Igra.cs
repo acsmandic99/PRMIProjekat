@@ -146,43 +146,59 @@ namespace Klase
                     {
                         igraci[IgracKojiJePoslednjiTukao].NosiKarte(karta);
                     }
-                    //TODO:
-                    //foreach u slucaju da ima 4 igraca
-                    //po timu da sabiras sumu od igraca.Tim =1 i igrac.Tim = 2
-                    int poeniIgrac1 = igraci[0].IzbrojOsvojenePoene();
-                    int poeniIgrac2 = igraci[1].IzbrojOsvojenePoene();
-                    if (poeniIgrac1 > poeniIgrac2)
-                    {   
-                        igracNaPotezu = 0;
-                        paket.message = "Igrac " + igraci[0].Ime + " je skupio " + poeniIgrac1 + " poena";
-                        paket.message += "\nIgrac " + igraci[1].Ime + " je skupio " + poeniIgrac2 + " poena";
-                        paket.message += "\nPobedio je igrac " + igraci[0].Ime;
+                    // Bodovi po timovima
+                    Dictionary<int, int> poeniTimova = new Dictionary<int, int>();
 
-                    }
-                    else if(poeniIgrac2 > poeniIgrac1)
+                    foreach (Igrac igrac in igraci)
                     {
-                        igracNaPotezu = 1;
-                        paket.message = "Igrac " + igraci[0].Ime + " je skupio " + poeniIgrac1 + " poena";
-                        paket.message += "\nIgrac " + igraci[1].Ime + " je skupio " + poeniIgrac2 + " poena";
-                        paket.message += "\nPobedio je igrac " + igraci[1].Ime;
+                        int poeni = igrac.IzbrojOsvojenePoene();
+                        if (poeniTimova.ContainsKey(igrac.Tim))
+                            poeniTimova[igrac.Tim] += poeni;
+                        else
+                            poeniTimova[igrac.Tim] = poeni;
+                    }
+
+                    // Prikaz poena svih igraca
+                    paket.message = "";
+                    foreach (Igrac igrac in igraci)
+                    {
+                        paket.message += $"Igrac {igrac.Ime} {igrac.Prezime} (Tim {igrac.Tim}) je skupio {igrac.IzbrojOsvojenePoene()} poena.\n";
+                    }
+
+                    // Sumarni poeni po timovima
+                    paket.message += "\n";
+                    foreach (var kvp in poeniTimova)
+                    {
+                        paket.message += $"Tim {kvp.Key} ukupno: {kvp.Value} poena.\n";
+                    }
+
+                    // Odredjivanje pobednika
+                    int pobednickiTim = -1;
+                    if (poeniTimova.Count == 2)
+                    {
+                        var enumerator = poeniTimova.GetEnumerator();
+                        enumerator.MoveNext();
+                        var prvi = enumerator.Current;
+                        enumerator.MoveNext();
+                        var drugi = enumerator.Current;
+
+                        if (prvi.Value > drugi.Value)
+                            pobednickiTim = prvi.Key;
+                        else if (drugi.Value > prvi.Value)
+                            pobednickiTim = drugi.Key;
+                    }
+
+                    if (pobednickiTim != -1)
+                    {
+                        paket.message += $"\nPobednik je Tim {pobednickiTim}!";
                     }
                     else
                     {
-                        if (IgracKojiJePoslednjiTukao == 0)
-                        {
-                            igracNaPotezu = 0;
-                            paket.message = "Igrac " + igraci[0].Ime + " je skupio " + poeniIgrac1 + " poena";
-                            paket.message += "\nIgrac " + igraci[1].Ime + " je skupio " + poeniIgrac2 + " poena";
-                            paket.message += "\nPobedio je igrac " + igraci[0].Ime + "jer je poslednji nosio karte.";
-                        }
-                        else
-                        {
-                            igracNaPotezu = 1;
-                            paket.message = "Igrac " + igraci[0].Ime + " je skupio " + poeniIgrac1 + " poena";
-                            paket.message += "\nIgrac " + igraci[1].Ime + " je skupio " + poeniIgrac2 + " poena";
-                            paket.message += "\nPobedio je igrac " + igraci[1].Ime + "jer je poslednji nosio karte.";
-                        }
+                        paket.message += "\nNereseno! Igraci koji su poslednji tukli nose pobedu za svoj tim!";
+                        pobednickiTim = igraci[IgracKojiJePoslednjiTukao].Tim;
+                        paket.message += $"\nPobednik je Tim {pobednickiTim} (jer je poslednji tukao).";
                     }
+
                     paket.message += "\nDa li zelite da odigrate novu partiju? Y/N";
                     PosaljiIgracimaStanje(paket);
                     int spremnih_igraca = 0;

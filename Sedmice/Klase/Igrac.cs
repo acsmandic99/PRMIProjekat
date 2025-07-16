@@ -35,8 +35,8 @@ namespace Klase
 				Console.Write(i + " - " + "( ");
 				if(karta.Znak == Znak.Herc || karta.Znak == Znak.Karo)
 					Console.ForegroundColor = ConsoleColor.Red;
-				Console.Write(karta.ToString() + "),  ");
-				Console.ForegroundColor = orgBoja;
+                Console.ForegroundColor = orgBoja;
+                Console.Write(karta.ToString() + "),  ");
 				i++;
 			}
 			Console.WriteLine();

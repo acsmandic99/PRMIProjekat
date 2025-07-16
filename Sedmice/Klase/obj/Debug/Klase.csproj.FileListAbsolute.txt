@@ -4,3 +4,9 @@ C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Klase\bin\Debug\Klase.dll
 C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Klase\bin\Debug\Klase.pdb
 C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Klase\obj\Debug\Klase.dll
 C:\Users\Korisnik\Documents\MrezeProjekat\Sedmice\Klase\obj\Debug\Klase.pdb
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Klase\bin\Debug\Klase.dll
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Klase\bin\Debug\Klase.pdb
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Klase\obj\Debug\Klase.csproj.AssemblyReference.cache
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Klase\obj\Debug\Klase.csproj.CoreCompileInputs.cache
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Klase\obj\Debug\Klase.dll
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Klase\obj\Debug\Klase.pdb
