@@ -1,0 +1,15 @@
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\bin\Debug\net8.0\Start.exe
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\bin\Debug\net8.0\Start.deps.json
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\bin\Debug\net8.0\Start.runtimeconfig.json
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\bin\Debug\net8.0\Start.dll
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\bin\Debug\net8.0\Start.pdb
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\obj\Debug\net8.0\Start.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\obj\Debug\net8.0\Start.AssemblyInfoInputs.cache
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\obj\Debug\net8.0\Start.AssemblyInfo.cs
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\obj\Debug\net8.0\Start.csproj.CoreCompileInputs.cache
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\obj\Debug\net8.0\Start.sourcelink.json
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\obj\Debug\net8.0\Start.dll
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\obj\Debug\net8.0\refint\Start.dll
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\obj\Debug\net8.0\Start.pdb
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\obj\Debug\net8.0\Start.genruntimeconfig.cache
+C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Start\obj\Debug\net8.0\ref\Start.dll

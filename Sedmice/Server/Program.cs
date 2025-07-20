@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -28,6 +29,7 @@ namespace Server
             {
                 Console.WriteLine("Broj igraca mora biti 2 ili 4");
                 brIgraca = Int32.Parse(Console.ReadLine());
+                PokreniKlijente(brIgraca);
             } while (brIgraca != 2 && brIgraca != 4);
             
 
@@ -102,6 +104,7 @@ namespace Server
 
                             if (brIgraca == 2)
                             {
+                                
                                 // za 2 igraca – oba moraju biti razlicitih timova
                                 if (countTim1 == 1 && temp.Tim == 1)
                                 {
@@ -111,7 +114,7 @@ namespace Server
                                     {
                                         bf.Serialize(ms, paket);
                                         dataBuffer = ms.ToArray();
-                                    }
+                                    } 
                                     udpSocket.SendTo(dataBuffer, remoteEP);
                                     continue;
                                 }
@@ -130,6 +133,7 @@ namespace Server
                             }
                             else if (brIgraca == 4)
                             {
+                                
                                 // za 4 igraca – max 2 po timu
                                 if (temp.Tim == 1 && countTim1 >= 2)
                                 {
@@ -301,5 +305,21 @@ namespace Server
                 udpSocket.SendTo(dataBuffer, ep);
             }
         }
+
+        static void PokreniKlijente(int brojKlijenata)
+        {
+            for (int i = 0; i < brojKlijenata; i++)
+            {
+                // Putanja do izvršnog fajla klijenta (potrebno je kompajlirati ga)  
+                string clientPath = @"C:\Users\Nikola\Documents\GitHub\PRMIProjekat\Sedmice\Client\bin\Debug\Client.exe";
+                Process klijentProces = new Process(); // Stvaranje novog procesa 
+                klijentProces.StartInfo.FileName = clientPath; //Zadavanje putanje za pokretanje 
+                klijentProces.StartInfo.Arguments = $"{i + 1}"; // Argument - broj klijenta  
+                klijentProces.Start(); // Pokretanje klijenta  
+                Console.WriteLine($"Pokrenut klijent #{i + 1}");
+            }
+        }
+
+
     }
 }
